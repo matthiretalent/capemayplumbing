@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roy Sundstrom Plumbing & Heating | Cape May County Master Plumber</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0b1c2e; --navy-mid: #132840; --teal: #0e7c7b; --teal-light: #14a09f;
+    --brass: #c8913a; --brass-light: #e0a94a; --cream: #f7f0e4; --cream-dark: #ede3cf;
+    --white: #ffffff; --text-muted: #8aa0b8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Lora', Georgia, serif; background: var(--navy); color: var(--cream); overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; opacity: 0.4; }
+  header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 48px; display: flex; align-items: center; justify-content: space-between; background: rgba(11,28,46,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(200,145,58,0.2); transition: all 0.3s ease; }
+  .logo { display: flex; flex-direction: column; gap: 2px; }
+  .logo-main { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; font-weight: 700; color: var(--white); letter-spacing: 0.02em; line-height: 1; }
+  .logo-sub { font-size: 10px; letter-spacing: 0.2em; color: var(--brass); text-transform: uppercase; font-style: italic; }
+  nav { display: flex; gap: 32px; align-items: center; }
+  nav a { color: var(--text-muted); text-decoration: none; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  nav a:hover { color: var(--cream); }
+  .header-cta { background: var(--brass); color: var(--navy) !important; padding: 10px 22px; border-radius: 3px; font-weight: 600; font-size: 13px !important; letter-spacing: 0.06em !important; transition: background 0.2s, transform 0.1s !important; }
+  .header-cta:hover { background: var(--brass-light) !important; color: var(--navy) !important; transform: translateY(-1px); }
+  .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 120px 48px 80px; }
+  .hero::before { content: ''; position: absolute; bottom: -60px; left: -10%; width: 120%; height: 200px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 200'%3E%3Cpath fill='%230b1c2e' fill-opacity='0.8' d='M0,80 C240,140 480,20 720,80 C960,140 1200,20 1440,80 L1440,200 L0,200 Z'/%3E%3C/svg%3E") no-repeat; background-size: cover; animation: wave1 8s ease-in-out infinite; z-index: 2; }
+  .hero::after { content: ''; position: absolute; bottom: -40px; left: -10%; width: 120%; height: 160px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 160'%3E%3Cpath fill='%230e7c7b' fill-opacity='0.15' d='M0,60 C360,120 720,0 1080,60 C1260,90 1380,40 1440,60 L1440,160 L0,160 Z'/%3E%3C/svg%3E") no-repeat; background-size: cover; animation: wave2 10s ease-in-out infinite reverse; z-index: 1; }
+  @keyframes wave1 { 0%,100%{transform:translateX(0) translateY(0)} 50%{transform:translateX(-2%) translateY(8px)} }
+  @keyframes wave2 { 0%,100%{transform:translateX(0) translateY(0)} 50%{transform:translateX(2%) translateY(-6px)} }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 40%, rgba(14,124,123,0.18) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(200,145,58,0.08) 0%, transparent 50%), linear-gradient(160deg, #0b1c2e 0%, #132840 40%, #0a2235 100%); }
+  .lighthouse-silhouette { position: absolute; right: 6%; bottom: 15%; width: 80px; height: 200px; opacity: 0.06; background: linear-gradient(to top, #c8913a, transparent); clip-path: polygon(35% 100%, 65% 100%, 70% 30%, 60% 28%, 60% 10%, 50% 0%, 40% 10%, 40% 28%, 30% 30%); }
+  .hero-content { position: relative; z-index: 5; max-width: 660px; }
+  .hero-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; animation: fadeUp 0.8s ease forwards; }
+  .hero-eyebrow-line { width: 40px; height: 1px; background: var(--brass); }
+  .hero-eyebrow span { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--brass); font-style: italic; }
+  h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(44px, 6vw, 76px); font-weight: 900; line-height: 1.05; color: var(--white); margin-bottom: 24px; animation: fadeUp 0.8s ease 0.1s both; }
+  h1 em { color: var(--brass); font-style: italic; }
+  .hero-sub { font-size: 17px; color: var(--text-muted); line-height: 1.7; max-width: 480px; margin-bottom: 40px; animation: fadeUp 0.8s ease 0.2s both; font-style: italic; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.8s ease 0.3s both; }
+  .btn-primary { background: var(--brass); color: var(--navy); padding: 16px 36px; border-radius: 3px; text-decoration: none; font-size: 15px; font-weight: 700; letter-spacing: 0.04em; transition: all 0.2s; border: 2px solid var(--brass); font-family: 'Lora', serif; }
+  .btn-primary:hover { background: var(--brass-light); border-color: var(--brass-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,145,58,0.3); }
+  .btn-secondary { background: transparent; color: var(--cream); padding: 16px 36px; border-radius: 3px; text-decoration: none; font-size: 15px; font-weight: 500; letter-spacing: 0.04em; transition: all 0.2s; border: 2px solid rgba(200,145,58,0.4); font-family: 'Lora', serif; font-style: italic; }
+  .btn-secondary:hover { border-color: var(--brass); color: var(--brass); transform: translateY(-2px); }
+  .hero-badges { position: absolute; bottom: 100px; right: 48px; display: flex; flex-direction: column; gap: 12px; z-index: 5; animation: fadeUp 0.8s ease 0.5s both; }
+  .badge { background: rgba(255,255,255,0.05); border: 1px solid rgba(200,145,58,0.25); padding: 12px 18px; border-radius: 4px; backdrop-filter: blur(8px); display: flex; align-items: center; gap: 10px; }
+  .badge-icon { font-size: 20px; }
+  .badge-text { font-size: 12px; color: var(--cream-dark); line-height: 1.4; }
+  .badge-text strong { display: block; color: var(--white); font-size: 13px; }
+  .trust-bar { background: var(--teal); padding: 16px 48px; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .trust-item { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+  .trust-item svg { flex-shrink: 0; }
+  section { padding: 100px 48px; }
+  .section-label { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .section-label-line { width: 30px; height: 1px; background: var(--brass); }
+  .section-label span { font-size: 11px; letter-spacing: 0.22em; color: var(--brass); text-transform: uppercase; font-style: italic; }
+  h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(32px, 4vw, 52px); font-weight: 700; line-height: 1.15; color: var(--white); }
+  h2 em { color: var(--brass); font-style: italic; }
+  .services { background: var(--navy); }
+  .services-header { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; margin-bottom: 64px; }
+  .services-intro { font-size: 15px; color: var(--text-muted); line-height: 1.8; font-style: italic; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .service-card { background: var(--navy-mid); padding: 36px 28px; border: 1px solid rgba(200,145,58,0.12); transition: all 0.3s ease; position: relative; overflow: hidden; cursor: default; }
+  .service-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--brass); transform: scaleX(0); transition: transform 0.3s ease; transform-origin: left; }
+  .service-card:hover { background: rgba(14,124,123,0.12); border-color: rgba(200,145,58,0.3); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-number { font-family: 'Playfair Display', serif; font-size: 11px; letter-spacing: 0.2em; color: var(--brass); margin-bottom: 20px; opacity: 0.7; }
+  .service-icon { font-size: 28px; margin-bottom: 16px; }
+  .service-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 12px; line-height: 1.3; }
+  .service-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; font-style: italic; }
+  .service-cta { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brass); text-decoration: none; transition: gap 0.2s; }
+  .service-cta:hover { gap: 10px; }
+  .about { background: linear-gradient(160deg, var(--navy-mid) 0%, var(--navy) 100%); position: relative; overflow: hidden; }
+  .about::before { content: '"'; position: absolute; top: 40px; right: 80px; font-family: 'Playfair Display', serif; font-size: 280px; color: rgba(200,145,58,0.04); line-height: 1; pointer-events: none; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+  .stat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(200,145,58,0.15); padding: 20px; border-radius: 4px; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: var(--brass); line-height: 1; }
+  .stat-label { font-size: 12px; color: var(--text-muted); letter-spacing: 0.06em; margin-top: 4px; font-style: italic; }
+  .about-text h2 { margin-bottom: 24px; }
+  .about-body { font-size: 15px; color: var(--text-muted); line-height: 1.85; font-style: italic; margin-bottom: 20px; }
+  .about-signature { margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(200,145,58,0.2); }
+  .signature-name { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; color: var(--brass); }
+  .signature-title { font-size: 11px; letter-spacing: 0.15em; color: var(--text-muted); text-transform: uppercase; margin-top: 4px; }
+  .about-values { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+  .value-item { display: flex; align-items: flex-start; gap: 14px; }
+  .value-check { width: 20px; height: 20px; background: rgba(200,145,58,0.15); border: 1px solid var(--brass); border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 11px; color: var(--brass); }
+  .value-text { font-size: 14px; color: var(--cream-dark); line-height: 1.6; }
+  .value-text strong { color: var(--white); }
+  .emergency { background: linear-gradient(135deg, #8b1a1a 0%, #5c1111 100%); padding: 60px 48px; text-align: center; border-top: 2px solid rgba(255,255,255,0.1); border-bottom: 2px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; }
+  .emergency::before { content: '🚨'; position: absolute; font-size: 200px; opacity: 0.04; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.05)} }
+  .emergency h2 { color: #fff; margin-bottom: 12px; position: relative; z-index: 1; }
+  .emergency p { color: rgba(255,255,255,0.7); font-style: italic; margin-bottom: 28px; position: relative; z-index: 1; }
+  .emergency-phone { font-family: 'Playfair Display', serif; font-size: clamp(36px,5vw,56px); font-weight: 900; color: #fff; text-decoration: none; display: block; margin-bottom: 20px; position: relative; z-index: 1; transition: color 0.2s; letter-spacing: 0.02em; }
+  .emergency-phone:hover { color: #ffd0d0; }
+  .contact { background: var(--navy); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .contact-detail { display: flex; gap: 16px; align-items: flex-start; margin-top: 28px; padding-bottom: 28px; border-bottom: 1px solid rgba(200,145,58,0.12); }
+  .contact-detail:last-of-type { border-bottom: none; }
+  .contact-icon { width: 44px; height: 44px; background: rgba(200,145,58,0.1); border: 1px solid rgba(200,145,58,0.25); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .contact-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brass); margin-bottom: 4px; font-style: italic; }
+  .contact-value { font-size: 15px; color: var(--white); text-decoration: none; transition: color 0.2s; font-style: italic; }
+  .contact-value:hover { color: var(--brass); }
+  .contact-form-area h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--white); margin-bottom: 8px; }
+  .form-sub { font-size: 13px; color: var(--text-muted); font-style: italic; margin-bottom: 28px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(200,145,58,0.2); border-radius: 3px; padding: 12px 16px; color: var(--cream); font-family: 'Lora', serif; font-size: 14px; outline: none; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--brass); background: rgba(200,145,58,0.05); }
+  .form-group select option { background: var(--navy-mid); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .btn-submit { width: 100%; background: var(--brass); color: var(--navy); border: none; padding: 15px; font-family: 'Lora', serif; font-size: 15px; font-weight: 700; letter-spacing: 0.04em; cursor: pointer; border-radius: 3px; transition: all 0.2s; margin-top: 8px; }
+  .btn-submit:hover { background: var(--brass-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(200,145,58,0.3); }
+  footer { background: #060e18; padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(200,145,58,0.15); flex-wrap: wrap; gap: 20px; }
+  .footer-copy { font-size: 12px; color: #4a6070; font-style: italic; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 12px; color: #4a6070; text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--brass); }
+  #retell-btn { position: fixed; bottom: 28px; right: 28px; z-index: 9999; width: 64px; height: 64px; border-radius: 50%; background: #1B4F8A; border: none; cursor: pointer; box-shadow: 0 4px 18px rgba(27,79,138,0.5); display: flex; align-items: center; justify-content: center; transition: transform 0.15s, background 0.2s; }
+  #retell-btn:hover { transform: scale(1.07); }
+  #retell-btn svg { width: 28px; height: 28px; fill: white; }
+  #retell-btn.active { background: #c0392b; }
+  #retell-bubble { position: fixed; bottom: 102px; right: 28px; z-index: 9999; background: #1B4F8A; color: white; padding: 10px 16px; border-radius: 16px 16px 4px 16px; font-size: 14px; font-family: Arial, sans-serif; box-shadow: 0 4px 16px rgba(0,0,0,0.2); max-width: 220px; display: block; }
+  #retell-bubble.hidden { display: none; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .fade-up { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 900px) { header{padding:16px 24px} nav{display:none} section{padding:64px 24px} .hero{padding:100px 24px 80px} .services-header{grid-template-columns:1fr;gap:16px} .services-grid{grid-template-columns:1fr 1fr} .about-grid{grid-template-columns:1fr;gap:48px} .contact{grid-template-columns:1fr;gap:48px} .hero-badges{display:none} .trust-bar{gap:20px;padding:16px 24px} footer{padding:32px 24px;flex-direction:column} }
+  @media (max-width: 600px) { .services-grid{grid-template-columns:1fr} .about-stats{grid-template-columns:1fr 1fr} .form-row{grid-template-columns:1fr} h1{font-size:38px} }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <span class="logo-main">Roy Sundstrom Plumbing</span>
+    <span class="logo-sub">&amp; Heating · Cape May County</span>
+  </div>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#about">Our Story</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:6094085151" class="header-cta">☎ 609-408-5151</a>
+  </nav>
+</header>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="lighthouse-silhouette"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><span>Cape May County · Est. 2021 · Three Generations</span></div>
+    <h1>Cape May's<br><em>Master</em><br>Plumber</h1>
+    <p class="hero-sub">Licensed, local, and built on decades of family craftsmanship. Roy Sundstrom Plumbing delivers honest work for Cape May homes and businesses.</p>
+    <div class="hero-actions">
+      <a href="tel:6094085151" class="btn-primary">☎ Call Now — Free Estimate</a>
+      <a href="#services" class="btn-secondary">View Our Services →</a>
+    </div>
+  </div>
+  <div class="hero-badges">
+    <div class="badge"><span class="badge-icon">🎖</span><div class="badge-text"><strong>Army Veteran</strong>7 years National Guard</div></div>
+    <div class="badge"><span class="badge-icon">📋</span><div class="badge-text"><strong>Master Licensed</strong>NJ Certified &amp; Insured</div></div>
+    <div class="badge"><span class="badge-icon">🏠</span><div class="badge-text"><strong>Cape May Born</strong>Lifelong local, local pride</div></div>
+  </div>
+</section>
+<div class="trust-bar">
+  <div class="trust-item"><svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Licensed Master Plumber</div>
+  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>24/7 Emergency Service</div>
+  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"/></svg>Three Generations of Expertise</div>
+  <div class="trust-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Serving All of Cape May County</div>
+</div>
+<section class="services" id="services">
+  <div class="services-header fade-up">
+    <div><div class="section-label"><div class="section-label-line"></div><span>What We Do</span></div><h2>Expert Services,<br><em>Done Right</em></h2></div>
+    <p class="services-intro">From seasonal winterization to full home remodels, every job gets the same care — delivered by a licensed master plumber who grew up fixing the very pipes he now installs.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up"><div class="service-number">01</div><div class="service-icon">🌊</div><div class="service-title">Seasonal Water Turn-On &amp; Turn-Off</div><p class="service-desc">Protect your Cape May home from freeze damage. We properly activate your system each spring and safely shut it down every fall.</p><a href="tel:6094085151" class="service-cta">Schedule ›</a></div>
+    <div class="service-card fade-up"><div class="service-number">02</div><div class="service-icon">🚿</div><div class="service-title">Outdoor Shower Installation</div><p class="service-desc">Perfect for beach homes and poolside properties. Expert drainage, durable fixtures, and year-round functionality.</p><a href="tel:6094085151" class="service-cta">See Projects ›</a></div>
+    <div class="service-card fade-up"><div class="service-number">03</div><div class="service-icon">🔥</div><div class="service-title">Water Heater Installation</div><p class="service-desc">Tank and tankless systems installed by a certified master plumber. On-demand hot water, done right the first time.</p><a href="tel:6094085151" class="service-cta">Get a Quote ›</a></div>
+    <div class="service-card fade-up"><div class="service-number">04</div><div class="service-icon">🚨</div><div class="service-title">24/7 Emergency Repairs</div><p class="service-desc">Burst pipes, leaks, failed water heaters — we respond fast, any time. Don't wait; call us the moment disaster strikes.</p><a href="tel:6094085151" class="service-cta">Call Now ›</a></div>
+    <div class="service-card fade-up"><div class="service-number">05</div><div class="service-icon">🏗</div><div class="service-title">City Water Connection &amp; Pipe Upgrades</div><p class="service-desc">Seamless city water hookups and full pipe system upgrades that improve flow, efficiency, and long-term safety.</p><a href="tel:6094085151" class="service-cta">Learn More ›</a></div>
+    <div class="service-card fade-up"><div class="service-number">06</div><div class="service-icon">🏠</div><div class="service-title">Home Remodels</div><p class="service-desc">Kitchen, bathroom, whole-house — we reroute pipes, install new fixtures, and keep your renovation code-compliant and on schedule.</p><a href="tel:6094085151" class="service-cta">Start Planning ›</a></div>
+  </div>
+</section>
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="fade-up">
+      <div class="section-label"><div class="section-label-line"></div><span>Our Story</span></div>
+      <h2>Three Generations,<br><em>One Name</em></h2>
+      <div class="about-stats">
+        <div class="stat-card"><div class="stat-num">17</div><div class="stat-label">Years training under Bud Sundstrom</div></div>
+        <div class="stat-card"><div class="stat-num">7</div><div class="stat-label">Years U.S. Army National Guard</div></div>
+        <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label">Generations of Cape May plumbing</div></div>
+        <div class="stat-card"><div class="stat-num">∞</div><div class="stat-label">Commitment to this community</div></div>
+      </div>
+    </div>
+    <div class="about-text fade-up">
+      <p class="about-body">Roy Sundstrom didn't just become a plumber — he was born into the trade. Spending 17 years learning alongside his father Bud, Roy earned every callus before ever earning his license. After seven years serving in the Army National Guard and graduating from Stockton University, he came home to Cape May and did the one thing that felt natural: he built something of his own.</p>
+      <p class="about-body">Sundstrom Plumbing launched in 2021. When Roy isn't running pipe, you'll find him surfing at Headquarters Beach or chasing his kids — Maverick, Dawson, and Stella — around the yard with his wife. This is his town. These are his neighbors. That's the difference.</p>
+      <div class="about-values">
+        <div class="value-item"><div class="value-check">✓</div><div class="value-text"><strong>Licensed Master Plumber</strong> — Not just certified. Master-level, NJ-licensed quality on every job.</div></div>
+        <div class="value-item"><div class="value-check">✓</div><div class="value-text"><strong>Local &amp; Family-Owned</strong> — Cape May roots mean we show up for our neighbors, not a franchise quota.</div></div>
+        <div class="value-item"><div class="value-check">✓</div><div class="value-text"><strong>Reliable &amp; Honest</strong> — Straight quotes, clear timelines, no surprise charges. Ever.</div></div>
+      </div>
+      <div class="about-signature"><div class="signature-name">Roy Sundstrom</div><div class="signature-title">Licensed Master Plumber · Cape May County, NJ</div></div>
+    </div>
+  </div>
+</section>
+<div class="emergency">
+  <h2>Plumbing Emergency?</h2>
+  <p>We pick up. Day or night, weekends included.</p>
+  <a href="tel:6094085151" class="emergency-phone">609-408-5151</a>
+  <a href="tel:6094085151" class="btn-primary" style="display:inline-block;">Call for Immediate Service</a>
+</div>
+<section class="contact" id="contact">
+  <div class="contact-info fade-up">
+    <div class="section-label"><div class="section-label-line"></div><span>Reach Us</span></div>
+    <h2>Let's Get<br><em>Your Job Done</em></h2>
+    <div class="contact-detail"><div class="contact-icon">📞</div><div><div class="contact-label">Phone</div><a href="tel:6094085151" class="contact-value">609-408-5151</a></div></div>
+    <div class="contact-detail"><div class="contact-icon">✉️</div><div><div class="contact-label">Email</div><a href="mailto:RoySundstrom@CapeMayPlumbing.com" class="contact-value">RoySundstrom@CapeMayPlumbing.com</a></div></div>
+    <div class="contact-detail"><div class="contact-icon">📍</div><div><div class="contact-label">Location</div><span class="contact-value">Erma, NJ — Serving all of Cape May County</span></div></div>
+    <div class="contact-detail"><div class="contact-icon">📸</div><div><div class="contact-label">Follow Our Work</div><a href="https://www.instagram.com/roysundstromplumbing/" target="_blank" class="contact-value">@roysundstromplumbing</a></div></div>
+  </div>
+  <div class="contact-form-area fade-up">
+    <h3>Request a Free Estimate</h3>
+    <p class="form-sub">We'll get back to you within a few hours. No pressure, no runaround.</p>
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="Roy"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Sundstrom"></div>
+      </div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="609-000-0000"></div>
+      <div class="form-group"><label>Service Needed</label><select><option>Select a service...</option><option>Seasonal Water Turn-On / Turn-Off</option><option>Outdoor Shower Installation</option><option>Water Heater Installation</option><option>Emergency Repair</option><option>City Water / Pipe Upgrade</option><option>Home Remodel</option><option>Other</option></select></div>
+      <div class="form-group"><label>Tell Us About Your Project</label><textarea placeholder="Brief description of what you need..."></textarea></div>
+      <button type="submit" class="btn-submit">Send Request →</button>
+    </form>
+  </div>
+</section>
+<footer>
+  <div class="footer-copy">© 2025 Roy Sundstrom Plumbing &amp; Heating · Erma, NJ · Licensed Master Plumber · Cape May County</div>
+  <div class="footer-links"><a href="#services">Services</a><a href="#about">About</a><a href="tel:6094085151">☎ Call</a><a href="mailto:RoySundstrom@CapeMayPlumbing.com">Email</a></div>
+</footer>
+
+<div id="retell-bubble">Talk to our AI assistant 24/7 👋</div>
+<button id="retell-btn" title="Talk to us">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+</button>
+
+<script type="module">
+  import { RetellWebClient } from 'https://esm.sh/retell-client-js-sdk';
+  const btn = document.getElementById('retell-btn');
+  const bubble = document.getElementById('retell-bubble');
+  let retellClient = null;
+  let callActive = false;
+  setTimeout(() => bubble.classList.add('hidden'), 5000);
+  btn.addEventListener('click', async () => {
+    if (callActive) { retellClient.stopCall(); btn.classList.remove('active'); callActive = false; return; }
+    try {
+      btn.disabled = true;
+      const res = await fetch('/.netlify/functions/retell-token');
+      const data = await res.json();
+      retellClient = new RetellWebClient();
+      retellClient.on('call_ended', () => { btn.classList.remove('active'); callActive = false; btn.disabled = false; });
+      retellClient.on('error', () => { btn.classList.remove('active'); callActive = false; btn.disabled = false; });
+      await retellClient.startCall({ accessToken: data.access_token });
+      btn.classList.add('active'); callActive = true; btn.disabled = false; bubble.classList.add('hidden');
+    } catch (err) { console.error('Retell error:', err); btn.disabled = false; }
+  });
+</script>
+<script>
+  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  window.addEventListener('scroll', () => { const h = document.querySelector('header'); h.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.4)' : 'none'; });
+  function handleSubmit(e) { e.preventDefault(); const b = e.target.querySelector('.btn-submit'); b.textContent = '✓ Request Sent — We\'ll be in touch soon!'; b.style.background = '#0e7c7b'; b.style.color = '#fff'; b.disabled = true; }
+</script>
+</body>
+</html>
