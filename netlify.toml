@@ -1,0 +1,14 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[build.environment]
+  RETELL_API_KEY = "key_96d69d73c5f25cd1f4f12ebadcf7"
+  RETELL_AGENT_ID = "agent_85d09600ec70c32e88217e24c7"
+
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type"
