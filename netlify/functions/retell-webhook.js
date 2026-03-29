@@ -25,8 +25,9 @@ exports.handler = async function (event) {
     return { statusCode: 400, body: "Invalid JSON" };
   }
 
-  // Only forward call_ended events (when call_analysis is available)
-  if (payload.event !== "call_ended") {
+  // Use call_analyzed event - fires after post-call analysis is complete
+  // call_ended fires too early, before custom_analysis_data is populated
+  if (payload.event !== "call_analyzed") {
     return { statusCode: 200, body: "Ignored" };
   }
 
