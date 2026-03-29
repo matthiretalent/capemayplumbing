@@ -44,10 +44,13 @@ exports.handler = async function (event) {
       : null,
     call_summary: analysis.call_summary,
     customer_name: customData.customer_name,
+    phone_number: call.from_number || customData.phone_number,
     service_address: customData.service_address,
     service_needed: customData.service_needed,
-    phone_number: call.from_number || customData.phone_number,
-    raw_call_analysis: analysis,
+    problem_description: customData.problem_description,
+    service_type: customData.service_type,
+    urgency: customData.urgency,
+    wants_callback: customData.wants_callback,
   };
 
   try {
